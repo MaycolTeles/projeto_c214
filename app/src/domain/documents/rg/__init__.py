@@ -4,13 +4,25 @@ __init__ file to export the classes below.
 
 from .rg import RG
 from .exceptions import InvalidRGException
-from .use_cases import RegisterRG, RegisterRGRequest, RegisterRGResponse
+from .request_model import RGRequest
+from .response_model import RGResponse
+from .use_cases import (
+    CreateRG,
+    ReadRG,
+    ReadAllRG,
+    UpdateRG,
+    DeleteRG
+)
 
 
 __all__ = [
     "RG",
     "InvalidRGException",
-    "RegisterRG",
-    "RegisterRGRequest",
-    "RegisterRGResponse",
+    "CreateRG",
+    "ReadRG",
+    "ReadAllRG",
+    "UpdateRG",
+    "DeleteRG",
+    "RGRequest",
+    "RGResponse",
 ]

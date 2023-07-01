@@ -16,7 +16,7 @@ class CPF(Document):
     Class to represent a CPF document.
     This class is responsible for validating a CPF.
     """
-    _cpf_value: str
+    _value: str
 
     def __init__(self, value: str, date: datetime) -> None:
         """
@@ -31,7 +31,7 @@ class CPF(Document):
             The date of the CPF.
         """
         cpf_only_numbers = self._get_only_cpf_numbers(value)
-        self._cpf_value = cpf_only_numbers
+        self._value = cpf_only_numbers
 
         super().__init__(date)
 
@@ -54,13 +54,13 @@ class CPF(Document):
 
     def _validate_document(self) -> None:
         """
-        Protected Method to validate the document by raising an exception if it's not valid.
+        Protected Method to validate the document by raising an exception if it"s not valid.
         """
         self._validate_cpf()
 
     def _validate_cpf(self) -> None:
         """
-        Private Method to validate the cpf by raising an exception if it's not valid.
+        Private Method to validate the cpf by raising an exception if it"s not valid.
         """
         self._validate_length()
         self._validate_digits()
@@ -76,12 +76,12 @@ class CPF(Document):
         InvalidCPFException
             If the cpf length is not valid.
         """
-        if len(self._cpf_value) == _CPF_LENGTH:
+        if len(self._value) == _CPF_LENGTH:
             return
 
         invalid_length_message = (
-            f"CPF {self._cpf_value} is invalid. "
-            f"CPF must have exactly 11 numerical digits (current={len(self._cpf_value)})"
+            f"CPF {self._value} is invalid. "
+            f"CPF must have exactly 11 numerical digits (current={len(self._value)})"
         )
 
         raise InvalidCPFException(invalid_length_message)
@@ -97,8 +97,8 @@ class CPF(Document):
         """
         Private Method to validate the cpf first digit.
         """
-        cpf_without_digits = self._cpf_value[:-2]
-        first_digit = self._cpf_value[-2]
+        cpf_without_digits = self._value[:-2]
+        first_digit = self._value[-2]
 
         rest = self._calculate_cpf_rest(cpf_without_digits, 1)
         self._validate_rest(rest, first_digit)
@@ -107,8 +107,8 @@ class CPF(Document):
         """
         Private Method to validate the cpf second digit.
         """
-        cpf_without_last_digit = self._cpf_value[:-1]
-        second_digit = self._cpf_value[-1]
+        cpf_without_last_digit = self._value[:-1]
+        second_digit = self._value[-1]
 
         rest = self._calculate_cpf_rest(cpf_without_last_digit, 0)
         self._validate_rest(rest, second_digit)
@@ -168,7 +168,7 @@ class CPF(Document):
         if int(actual_digit) == expected_digit:
             return
 
-        invalid_length_message = f"CPF {self._cpf_value} is not a valid CPF."
+        invalid_length_message = f"CPF {self._value} is not a valid CPF."
         raise InvalidCPFException(invalid_length_message)
 
     def _validate_date(self) -> None:
@@ -188,3 +188,9 @@ class CPF(Document):
             )
 
             raise InvalidCPFException(invalid_date_message)
+
+    def to_dict(self):
+        return {
+            "value": self._value,
+            "date": self._date.strftime("%Y-%m-%d"),
+        }

@@ -10,7 +10,7 @@ from src.domain.documents.rg import RG
 class RGRepository(ABC):
 
     @abstractmethod
-    def create(self, comprovante_residencia: RG):
+    def create(self, rg: RG):
         """
         TODO
         """

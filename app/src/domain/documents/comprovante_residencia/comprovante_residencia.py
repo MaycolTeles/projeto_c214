@@ -4,7 +4,7 @@ Class containing the "ComprovanteDeResidencia" Class.
 
 from datetime import datetime
 
-from .comprovante_residencia_types import ComprovanteResidenciaType
+from .types import ComprovanteResidenciaType
 from .exceptions import InvalidComprovanteResidenciaException
 from src.domain.documents import Document
 
@@ -35,13 +35,13 @@ class ComprovanteResidencia(Document):
 
     def _validate_document(self) -> None:
         """
-        Protected Method to validate the document by raising an exception if it's not valid.
+        Protected Method to validate the document by raising an exception if it"s not valid.
         """
         self._validate_comprovante_residencia()
 
     def _validate_comprovante_residencia(self) -> None:
         """
-        Private Method to validate the ComprovanteResidencia by raising an exception if it's not valid.
+        Private Method to validate the ComprovanteResidencia by raising an exception if it"s not valid.
         """
         self._validate_date()
 
@@ -56,3 +56,13 @@ class ComprovanteResidencia(Document):
                 f"Date can't be newer than current date (date={self._date})."
             )
             raise InvalidComprovanteResidenciaException(exception_message)
+
+    def to_dict(self):
+        """
+        Method to convert the object to a dict.
+        """
+        return {
+            "value": self._value,
+            "date": self._date.strftime("%Y-%m-%d"),
+            "comprovante_type": self._type.value
+        }

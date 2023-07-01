@@ -21,6 +21,12 @@ class Document(ABC):
     @abstractmethod
     def _validate_document(self) -> None:
         """
-        Protected Method to validate the document by checking if it's valid or not.
-        raises an exception if it's invalid.
+        Protected Method to validate the document by checking if it"s valid or not.
+        raises an exception if it"s invalid.
+        """
+
+    @abstractmethod
+    def to_dict(self):
+        """
+        Protected Method to convert the object to a dict.
         """

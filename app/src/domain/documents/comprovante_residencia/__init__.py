@@ -3,12 +3,16 @@ __init__ file to export the classes below.
 """
 
 from .comprovante_residencia import ComprovanteResidencia
-from .comprovante_residencia_types import ComprovanteResidenciaType
 from .exceptions import InvalidComprovanteResidenciaException
+from .request_model import ComprovanteResidenciaRequest
+from .response_model import ComprovanteResidenciaResponse
+from .types import ComprovanteResidenciaType
 from .use_cases import (
-    RegisterComprovanteResidencia,
-    RegisterComprovanteResidenciaRequest,
-    RegisterComprovanteResidenciaResponse
+    CreateComprovanteResidencia,
+    ReadComprovanteResidencia,
+    ReadAllComprovanteResidencia,
+    UpdateComprovanteResidencia,
+    DeleteComprovanteResidencia,
 )
 
 
@@ -16,7 +20,11 @@ __all__ = [
     "ComprovanteResidencia",
     "ComprovanteResidenciaType",
     "InvalidComprovanteResidenciaException",
-    "RegisterComprovanteResidencia",
-    "RegisterComprovanteResidenciaRequest",
-    "RegisterComprovanteResidenciaResponse",
+    "CreateComprovanteResidencia",
+    "ReadComprovanteResidencia",
+    "ReadAllComprovanteResidencia",
+    "UpdateComprovanteResidencia",
+    "DeleteComprovanteResidencia",
+    "ComprovanteResidenciaRequest",
+    "ComprovanteResidenciaResponse",
 ]

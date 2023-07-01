@@ -6,3 +6,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    ports:
+      - '5000:5000'
+
+  mysql:
+    build: ./database
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '3306:3306'

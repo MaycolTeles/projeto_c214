@@ -41,9 +41,47 @@ First off, in order to get a copy of the project to run/test it, clone the repos
 git clone git@github.com:MaycolTeles/projeto_c214.git
 ```
 
-### TODO: ADD SECTION TO SET UP USING `start_project.sh` SCRIPT
+### Creating and Activating the Virtual Environment :open_file_folder:
+It is recommended to install the dependencies inside a [virtualenv](https://docs.python.org/3/tutorial/venv.html). So, inside the folder where you cloned the repository, create a new virtualenv:
 
-### TODO: ADD SECTION TO RUN USING `DOCKER`
+```
+python3 -m virtualenv venv
+```
+
+If you don't have the virtualenv package installed, you can install it with pip:
+
+```
+pip install virtualenv
+```
+    
+Now, activate the virtualenv (for Linux/MacOS):
+
+```
+source venv/bin/activate
+```
+
+or (for Windows):
+
+```
+.\venv\Scripts\activate
+```
+
+### Installing Dependencies :wrench:
+To install all the necessary project dependencies, run the following command in the terminal (make sure you're running it from whithin your virtualenv):
+
+```
+pip install -r requirements.txt
+```
+
+### Docker :whale2: 
+To run the application inside a docker container, you can run using docker-compose by running:
+
+```
+docker-compose up
+```
+
+This should start the application and the database.
+
 
 *********************
 
@@ -59,7 +97,7 @@ make run
 or you can use the Python interpreter directly by running:
 
 ```
-python app/run.py
+python -m app.run
 ```
 
 ### Changing the UI/Database
